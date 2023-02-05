@@ -67,6 +67,12 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M8</version>
                 </plugin>
+                <!-- フォーマット -->
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>2.21.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>

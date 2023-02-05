@@ -5,10 +5,10 @@ DOCKER = docker exec $(CONTAINER_NAME)
 
 prepare: build up install
 
-run:
+run: format
 	$(DOCKER) mvn exec:java
 
-test:
+test: format
 	$(DOCKER) mvn test
 
 sh:
@@ -27,7 +27,7 @@ lint: format
 	$(DOCKER) cargo clippy
 
 format:
-	$(DOCKER) cargo fmt
+	$(DOCKER) mvn formatter:format
 
 install:
 	$(DOCKER) mvn install
