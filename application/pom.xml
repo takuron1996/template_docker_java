@@ -18,6 +18,7 @@
         <java.version>18</java.version>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
+        <pmdVersion>6.53.0</pmdVersion>
     </properties>
 
     <!-- 外部のライブラリを使用する場合に追記 -->
@@ -72,6 +73,47 @@
                     <groupId>net.revelc.code.formatter</groupId>
                     <artifactId>formatter-maven-plugin</artifactId>
                     <version>2.21.0</version>
+                </plugin>
+                <!-- リント（PMD）-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.20.0</version>
+                    <configuration>
+                        <linkXRef>false</linkXRef>
+                        <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                        <targetJdk>${java.version}</targetJdk>
+                        <!-- https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html -->
+                        <!-- <rulesets>
+                            <ruleset>/rulesets/basic.xml</ruleset>
+                            <ruleset>/rulesets/braces.xml</ruleset>
+                            <ruleset>/rulesets/naming.xml</ruleset>
+                            <ruleset>/rulesets/strings.xml</ruleset>
+                            <ruleset>/rulesets/migrating.xml</ruleset>
+                        </rulesets> -->
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-core</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-java</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-javascript</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-jsp</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>

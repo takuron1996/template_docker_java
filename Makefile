@@ -24,7 +24,7 @@ down:
 	docker-compose down
 
 lint: format
-	$(DOCKER) cargo clippy
+	$(DOCKER) mvn pmd:pmd
 
 format:
 	$(DOCKER) mvn formatter:format
