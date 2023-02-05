@@ -1,13 +1,18 @@
 package com.example;
 
 /**
- * Hello world!
+ * エントリーポイント
  *
  */
 public class Main 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        var main = new Main();
+        System.out.println(main.hello());
+    }
+
+    public String hello(){
+        return "hello";
     }
 }

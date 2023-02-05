@@ -3,13 +3,13 @@ CONTAINER_NAME = app
 APPLICATION = application
 DOCKER = docker exec $(CONTAINER_NAME)
 
-prepare: build	up
+prepare: build up install
 
 run:
 	$(DOCKER) mvn exec:java
 
-test: format
-	$(DOCKER) cargo test
+test:
+	$(DOCKER) mvn test
 
 sh:
 	docker exec -it $(CONTAINER_NAME) /bin/sh
@@ -28,3 +28,6 @@ lint: format
 
 format:
 	$(DOCKER) cargo fmt
+
+install:
+	$(DOCKER) mvn install
